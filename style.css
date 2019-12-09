@@ -1,0 +1,169 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.content {
+	height: 400px;
+	width: 100%;
+	margin-top: 250px;
+
+}
+
+.gear,
+.second-gear {
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	background: red;
+	margin: 0 auto;
+	position: relative;
+}
+
+.gear {
+	animation-timing-function: linear;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+.second-gear {
+	top: 20px;
+	right: 50px;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes second-gear-rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(-360deg);
+		scale: 2;
+	}
+}
+
+.gear-element,
+.gear-element::after,
+.gear-element::before,
+.second-gear-element,
+.second-gear-element::after,
+.second-gear-element::before {
+	height: 94px;
+	width: 22px;
+	background: red;
+	border-radius: 4px;
+	left: 50%;
+	top: 50%;
+	margin-left: -11px;
+	margin-top: -47px;
+	position: absolute;
+}
+
+@keyframes gear-rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+		scale: 2;
+	}
+}
+
+.gear-element::after,
+.second-gear-element::after {
+	content: '';
+	transform: rotate(60deg);
+}
+
+.gear-element::before,
+.second-gear-element::before {
+	content: '';
+	transform: rotate(-60deg);
+}
+
+input {
+	display: none;
+}
+
+#radio {
+	display: block;
+	height: 40px;
+	width: 40px;
+	border-radius: 3px;
+	background: rgb(112, 112, 243);
+	border: 2px solid rgb(60, 60, 128);
+	cursor: pointer;
+	position: relative;
+	left: 50%;
+	margin-left: -20px;
+	top: -90px;
+}
+
+#radio::before {
+	display: none;
+	content: "";
+	position: absolute;
+	height: 20px;
+	width: 30px;
+	top: 20%;
+	left: 20%;
+	border-left: 2px solid rgb(60, 60, 128);
+	transform: rotate(-30deg);
+}
+
+#radio::after {
+	display: none;
+	content: "";
+	position: absolute;
+	height: 35px;
+	width: 30px;
+	top: -6px;
+	right: 29%;
+	border-right: 2px solid rgb(60, 60, 128);
+	transform: rotate(30deg);
+}
+
+#radiobtn:checked+label::before,
+#radiobtn:checked+label::after {
+	display: block;
+}
+
+#radiobtn:checked~.gear {
+	animation-name: gear-rotate;
+
+}
+
+#radiobtn:checked~.second-gear {
+	animation-name: second-gear-rotate;
+}
+
+span {
+	text-align: center;
+	text-transform: uppercase;
+	color: rgb(60, 60, 128);
+	font-size: 20px;
+	font-weight: 900;
+	top: -50px;
+	position: relative;
+}
+
+.Animation-disabled {
+	display: none;
+
+}
+
+.Animation-enabled {
+	display: block;
+}
+
+#radiobtn:checked~.Animation-enabled {
+	display: none;
+}
+
+#radiobtn:checked~.Animation-disabled {
+	display: block;
+}
